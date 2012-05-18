@@ -9,6 +9,7 @@ sourceCompatibility = '1.6'
 targetCompatibility = '1.6'
 
 def slf4jVersion = '1.6.4'
+def mahoutVersion = '0.6'
 
 repositories {
   mavenCentral()
@@ -17,8 +18,14 @@ repositories {
 dependencies {
   groovy 'org.codehaus.groovy:groovy-all:1.8.6'
 
-  compile('org.apache.mahout:mahout-core:0.6') {
+  compile("org.apache.mahout:mahout-core:${mahoutVersion}") {
     exclude module: 'jfreechart'
+  }
+  compile("org.apache.mahout:mahout-integration:${mahoutVersion}") {
+    exclude module: 'mongo-java-driver'
+    exclude module: 'bson'
+    exclude module: 'cassandra-all'
+    exclude module: 'hector-core'
   }
 
   compile "org.slf4j:slf4j-api:${slf4jVersion}"
