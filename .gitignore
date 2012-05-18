@@ -13,3 +13,5 @@ bin
 *.ipr
 *.iws
 out
+data/ua.base
+data/ua.test
