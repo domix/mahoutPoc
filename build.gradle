@@ -1,6 +1,5 @@
 description = 'Mahout POC'
 
-apply plugin: 'base'
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'groovy'
@@ -8,6 +7,8 @@ apply plugin: 'project-report'
 
 sourceCompatibility = '1.6'
 targetCompatibility = '1.6'
+
+def slf4jVersion = '1.6.4'
 
 repositories {
   mavenCentral()
@@ -20,17 +21,10 @@ dependencies {
     exclude module: 'jfreechart'
   }
 
-  testCompile 'junit:junit:4.10'
-  compile 'org.slf4j:slf4j-api:1.6.4'
-  compile 'org.slf4j:slf4j-jcl:1.6.4'
-}
+  compile "org.slf4j:slf4j-api:${slf4jVersion}"
+  compile "org.slf4j:slf4j-log4j12:${slf4jVersion}"
 
-task makeDirs(description: 'make all dirs for project setup') << {
-  def sources = [sourceSets.main, sourceSets.test]
-  sources*.allSource*.srcDirs.flatten().each { File srcDir ->
-    println "making $srcDir"
-    srcDir.mkdirs()
-  }
+  testCompile 'junit:junit:4.10'
 }
 
 task wrap(type: Wrapper, description: "create a gradlew") {
