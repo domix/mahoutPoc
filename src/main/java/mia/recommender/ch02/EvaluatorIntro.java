@@ -21,7 +21,7 @@ class EvaluatorIntro {
   private EvaluatorIntro() {
   }
 
-  public static void x(String[] args) throws Exception {
+  public static void main(String[] args) throws Exception {
     RandomUtils.useTestSeed();
     DataModel model = new FileDataModel(new File("data/intro.csv"));
 
