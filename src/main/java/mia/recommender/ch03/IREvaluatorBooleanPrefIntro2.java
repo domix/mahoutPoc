@@ -28,7 +28,7 @@ class IREvaluatorBooleanPrefIntro2 {
   public static void main(String[] args) throws Exception {
     DataModel model = new GenericBooleanPrefDataModel(
         GenericBooleanPrefDataModel.toDataMap(
-          new FileDataModel(new File("ua.base"))));
+          new FileDataModel(new File("data/ua.base"))));
 
     RecommenderIRStatsEvaluator evaluator =
       new GenericRecommenderIRStatsEvaluator();
